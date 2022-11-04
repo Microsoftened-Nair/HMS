@@ -35,6 +35,14 @@ class Ui_DoctorWindow(object):
         for o in drugdata:
             self.textEdit_4.append(f'{o}')
         mydb.commit()
+
+    def Sign_out(self):
+        from Sign_in import Ui_MainWindow
+        self.window = QtWidgets.QMainWindow()
+        self.ui = Ui_MainWindow()
+        self.ui.setupUi(self.window)
+        self.window.show()
+        MainWindow.close()
     def setupUi(self, MainWindow):
         MainWindow.setObjectName("MainWindow")
         MainWindow.resize(1440, 877)
@@ -186,6 +194,7 @@ class Ui_DoctorWindow(object):
         self.pushButton_5.setIcon(icon)
         self.pushButton_5.setIconSize(QtCore.QSize(50, 50))
         self.pushButton_5.setObjectName("pushButton_5")
+        self.pushButton_5.clicked.connect(self.Sign_out)
         MainWindow.setCentralWidget(self.centralwidget)
 
         self.retranslateUi(MainWindow)

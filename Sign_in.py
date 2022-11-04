@@ -58,11 +58,13 @@ class Ui_MainWindow(object):
 
                 if p=='a':
                     self.AdminWindow()
-
+                    MainWindow.close()
                 if p=='d':
                     self.DoctorWindow()
+                    MainWindow.close()
                 if p=='p':
                     self.PatientWindow()
+                    MainWindow.close()
 
             if key != rs[0]:
                 self.label_4.setText('[INCORRECT PASSWORD            ]')
