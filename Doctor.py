@@ -19,7 +19,7 @@ for x in myresult:
 mycursor.execute("select * from pms")
 myresult = mycursor.fetchall()
 
-class Ui_MainWindow(object):
+class Ui_DoctorWindow(object):
     def setupUi(self, MainWindow):
         MainWindow.setObjectName("MainWindow")
         MainWindow.resize(1440, 877)
@@ -219,7 +219,7 @@ if __name__ == "__main__":
     import sys
     app = QtWidgets.QApplication(sys.argv)
     MainWindow = QtWidgets.QMainWindow()
-    ui = Ui_MainWindow()
+    ui = Ui_DoctorWindow()
     ui.setupUi(MainWindow)
     MainWindow.show()
     sys.exit(app.exec_())

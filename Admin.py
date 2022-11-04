@@ -1,5 +1,7 @@
 from PyQt5 import QtCore, QtGui, QtWidgets
+# from Sign_in import Ui_MainWindow
 import mysql.connector
+
 
 mydb = mysql.connector.connect(
     host="localhost",
@@ -7,28 +9,67 @@ mydb = mysql.connector.connect(
     password="123456",
     database='HMS',
 )
-
 mycursor = mydb.cursor()
-mycursor.execute("describe pms")
-myresult = mycursor.fetchall()
 
-lst = []
-for x in myresult:
-    lst.append(x[0])
+class Ui_AdminWindow(object):
 
-mycursor.execute("select * from pms")
-myresult = mycursor.fetchall()
+    def Pcommand(self):
+        cmd = self.lineEdit.text()
+        mycursor.execute(cmd)
+        mycursor.execute("describe pms")
+        myresult = mycursor.fetchall()
 
-class Ui_MainWindow(object):
+        lst = []
+        for x in myresult:
+            lst.append(x[0])
+
+        mycursor.execute("select * from pms")
+        myresult = mycursor.fetchall()
+
+        self.textEdit.setText(f"{lst}")
+        for x in myresult:
+            self.textEdit.append(f"{x}")
+        mydb.commit()
+
+    def DoCcommand(self):
+        cmd = self.lineEdit.text()
+        mycursor.execute(cmd)
+        mycursor.execute("describe Dms")
+        res = mycursor.fetchall()
+        doc = []
+        for i in res:
+            doc.append(i[0])
+
+        self.textEdit_3.setText(f"{doc}")
+        mycursor.execute("select * from dms")
+        docdata = mycursor.fetchall()
+        for t in docdata:
+            self.textEdit_3.append(f"{t}")
+        mydb.commit()
+    def Dcommand(self):
+        cmd = self.lineEdit.text()
+        mycursor.execute(cmd)
+        mycursor.execute('describe drugms')
+        drugcol = mycursor.fetchall()
+        col = []
+        for y in drugcol:
+            col.append(y[0])
+        self.textEdit_4.setText(_translate("MainWindow", f"{col}"))
+        mycursor.execute('select * from drugms')
+        drugdata = mycursor.fetchall()
+        for o in drugdata:
+            self.textEdit_4.append(f'{o}')
+        mydb.commit()
+
     def setupUi(self, MainWindow):
         MainWindow.setObjectName("MainWindow")
-        MainWindow.resize(1440, 877)
+        MainWindow.resize(1300, 877)
         sizePolicy = QtWidgets.QSizePolicy(QtWidgets.QSizePolicy.Preferred, QtWidgets.QSizePolicy.Preferred)
         sizePolicy.setHorizontalStretch(0)
         sizePolicy.setVerticalStretch(0)
         sizePolicy.setHeightForWidth(MainWindow.sizePolicy().hasHeightForWidth())
         MainWindow.setSizePolicy(sizePolicy)
-        MainWindow.setMinimumSize(QtCore.QSize(1440, 877))
+        MainWindow.setMinimumSize(QtCore.QSize(1300, 877))
         MainWindow.setMaximumSize(QtCore.QSize(1920, 1080))
         MainWindow.setBaseSize(QtCore.QSize(1440, 877))
         MainWindow.setStyleSheet("background-color: rgb(0, 0, 0);")
@@ -77,6 +118,7 @@ class Ui_MainWindow(object):
 "    border: 2px solid rgb(255, 255, 255);\n"
 "}")
         self.pushButton.setObjectName("pushButton")
+        self.pushButton.clicked.connect(self.Pcommand)
         self.textEdit = QtWidgets.QTextEdit(self.tab)
         self.textEdit.setGeometry(QtCore.QRect(20, 90, 1101, 631))
         self.textEdit.setStyleSheet("QTextEdit {\n"
@@ -112,6 +154,7 @@ class Ui_MainWindow(object):
 "    border: 2px solid rgb(255, 255, 255);\n"
 "}")
         self.pushButton_3.setObjectName("pushButton_3")
+        self.pushButton_3.clicked.connect(self.DoCcommand)
         self.lineEdit_3 = QtWidgets.QLineEdit(self.tab_2)
         self.lineEdit_3.setGeometry(QtCore.QRect(20, 20, 871, 41))
         self.lineEdit_3.setStyleSheet("QLineEdit    {\n"
@@ -148,6 +191,7 @@ class Ui_MainWindow(object):
 "    border: 2px solid rgb(255, 255, 255);\n"
 "}")
         self.pushButton_4.setObjectName("pushButton_4")
+        self.pushButton_4.clicked.connect(self.Dcommand)
         self.lineEdit_4 = QtWidgets.QLineEdit(self.tab_4)
         self.lineEdit_4.setGeometry(QtCore.QRect(20, 20, 871, 41))
         self.lineEdit_4.setStyleSheet("QLineEdit    {\n"
@@ -182,6 +226,16 @@ class Ui_MainWindow(object):
         MainWindow.setWindowTitle(_translate("MainWindow", "MainWindow"))
         self.lineEdit.setText(_translate("MainWindow", "!xobile"))
         self.pushButton.setText(_translate("MainWindow", "Enter command"))
+        mycursor.execute("describe pms")
+        myresult = mycursor.fetchall()
+
+        lst = []
+        for x in myresult:
+            lst.append(x[0])
+
+        mycursor.execute("select * from pms")
+        myresult = mycursor.fetchall()
+
         self.textEdit.setText(_translate("MainWindow", f"{lst}"))
         for x in myresult:
             self.textEdit.append(f"{x}")
@@ -214,12 +268,18 @@ class Ui_MainWindow(object):
         self.lineEdit_4.setText(_translate("MainWindow", "!xobile"))
         self.tabWidget.setTabText(self.tabWidget.indexOf(self.tab_4), _translate("MainWindow", "Drug"))
 
+        # def Sign_out(self):
+        #     self.window = QtWidgets.QMainWindow()
+        #     self.ui = Ui_MainWindow()
+        #     self.ui.setupUi(self.window)
+        #     self.window.show()
+
 
 if __name__ == "__main__":
     import sys
     app = QtWidgets.QApplication(sys.argv)
     MainWindow = QtWidgets.QMainWindow()
-    ui = Ui_MainWindow()
+    ui = Ui_AdminWindow()
     ui.setupUi(MainWindow)
     MainWindow.show()
     sys.exit(app.exec_())

@@ -19,7 +19,7 @@ for x in myresult:
 mycursor.execute("select * from pms")
 myresult = mycursor.fetchall()
 
-class Ui_MainWindow(object):
+class Ui_PatientWindow(object):
     def setupUi(self, MainWindow):
         MainWindow.setObjectName("MainWindow")
         MainWindow.resize(1440, 877)
@@ -214,12 +214,11 @@ class Ui_MainWindow(object):
         self.lineEdit_4.setText(_translate("MainWindow", "!xobile"))
         self.tabWidget.setTabText(self.tabWidget.indexOf(self.tab_4), _translate("MainWindow", "Drug"))
 
-
 if __name__ == "__main__":
     import sys
     app = QtWidgets.QApplication(sys.argv)
     MainWindow = QtWidgets.QMainWindow()
-    ui = Ui_MainWindow()
+    ui = Ui_PatientWindow()
     ui.setupUi(MainWindow)
     MainWindow.show()
     sys.exit(app.exec_())

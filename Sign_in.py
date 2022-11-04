@@ -1,10 +1,77 @@
 from PyQt5 import QtCore, QtGui, QtWidgets
-import main.py
+from PyQt5.QtCore import QProcess
+import mysql.connector
+from Admin import Ui_AdminWindow
+from Doctor import Ui_DoctorWindow
+from Patient import Ui_PatientWindow
+
+
+db = mysql.connector.connect(
+    host='localhost',
+    user='root',
+    password='123456',
+    database='HMS'
+)
+
+c = db.cursor()
 
 class Ui_MainWindow(object):
+
+    def AdminWindow(self):
+        self.window = QtWidgets.QMainWindow()
+        self.ui = Ui_AdminWindow()
+        self.ui.setupUi(self.window)
+        self.window.show()
+
+    def DoctorWindow(self):
+        self.window = QtWidgets.QMainWindow()
+        self.ui = Ui_DoctorWindow()
+        self.ui.setupUi(self.window)
+        self.window.show()
+
+    def PatientWindow(self):
+        self.window = QtWidgets.QMainWindow()
+        self.ui = Ui_PatientWindow()
+        self.ui.setupUi(self.window)
+        self.window.show()
+    def authorize(self):
+        user = self.lineEdit.text()
+        key = self.lineEdit_2.text()
+
+        cmd = f'select username from accounts where username="{user}"'
+        c.execute(cmd)
+        r = c.fetchall()
+
+        if len(r) == 0:
+            self.label_4.setText("[USER DOES NOT EXIST          ]")
+
+        if len(r) != 0:
+            cmd = f'select password from accounts where username="{user}"'
+            c.execute(cmd)
+            r=c.fetchall()
+            rs = r[0]
+
+            if key == rs[0]:
+                cmd=f'select permissions from accounts where username="{user}"'
+                c.execute(cmd)
+                r = c.fetchall()
+                keys = r[0]
+                p = keys[0]
+
+                if p=='a':
+                    self.AdminWindow()
+
+                if p=='d':
+                    self.DoctorWindow()
+                if p=='p':
+                    self.PatientWindow()
+
+            if key != rs[0]:
+                self.label_4.setText('[INCORRECT PASSWORD            ]')
+
     def setupUi(self, MainWindow):
         MainWindow.setObjectName("MainWindow")
-        MainWindow.resize(838, 516)
+        MainWindow.resize(800, 500)
         MainWindow.setStyleSheet("background-color: rgb(0, 0, 0);")
         self.centralwidget = QtWidgets.QWidget(MainWindow)
         self.centralwidget.setObjectName("centralwidget")
@@ -72,6 +139,7 @@ class Ui_MainWindow(object):
 "    border: 2px solid rgb(255, 255, 255);\n"
 "}")
         self.pushButton.setObjectName("pushButton")
+        self.pushButton.clicked.connect(self.authorize)
         self.label_4 = QtWidgets.QLabel(self.centralwidget)
         self.label_4.setGeometry(QtCore.QRect(30, 430, 771, 31))
         font = QtGui.QFont()
@@ -81,7 +149,7 @@ class Ui_MainWindow(object):
         font.setWeight(75)
         self.label_4.setFont(font)
         self.label_4.setStyleSheet("color: rgb(255, 255, 255);")
-        self.label_4.setText("")
+        self.label_4.setText("[                              ]")
         self.label_4.setObjectName("label_4")
         self.pushButton_2 = QtWidgets.QPushButton(self.centralwidget)
         self.pushButton_2.setGeometry(QtCore.QRect(530, 40, 241, 51))
