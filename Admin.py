@@ -1,5 +1,4 @@
 from PyQt5 import QtCore, QtGui, QtWidgets
-# from Sign_in import Ui_MainWindow
 import mysql.connector
 
 
@@ -61,6 +60,12 @@ class Ui_AdminWindow(object):
             self.textEdit_4.append(f'{o}')
         mydb.commit()
 
+    def Sign_out(self):
+        from Sign_in import Ui_MainWindow
+        self.window = QtWidgets.QMainWindow()
+        self.ui = Ui_MainWindow()
+        self.ui.setupUi(self.window)
+        self.window.show()
     def setupUi(self, MainWindow):
         MainWindow.setObjectName("MainWindow")
         MainWindow.resize(1300, 877)

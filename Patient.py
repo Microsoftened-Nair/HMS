@@ -20,6 +20,12 @@ mycursor.execute("select * from pms")
 myresult = mycursor.fetchall()
 
 class Ui_PatientWindow(object):
+
+    def Pcommand(self):
+        cmd = self.lineEdit.text()
+        mycursor.execute(cmd)
+        mydb.commit()
+
     def setupUi(self, MainWindow):
         MainWindow.setObjectName("MainWindow")
         MainWindow.resize(1440, 877)
@@ -125,38 +131,38 @@ class Ui_PatientWindow(object):
         self.tab_4 = QtWidgets.QWidget()
         self.tab_4.setObjectName("tab_4")
         self.textEdit_4 = QtWidgets.QTextEdit(self.tab_4)
-        self.textEdit_4.setGeometry(QtCore.QRect(20, 90, 1101, 631))
+        self.textEdit_4.setGeometry(QtCore.QRect(20, 10, 1101, 711))
         self.textEdit_4.setStyleSheet("QTextEdit {\n"
 "    font: 18pt \"Bahnschrift\";\n"
 "    color: rgb(255, 255, 255);\n"
 "}")
         self.textEdit_4.setReadOnly(True)
         self.textEdit_4.setObjectName("textEdit_4")
-        self.pushButton_4 = QtWidgets.QPushButton(self.tab_4)
-        self.pushButton_4.setGeometry(QtCore.QRect(900, 20, 221, 41))
-        self.pushButton_4.setStyleSheet("QPushButton    {\n"
-"    background-color: rgb(0, 0, 0);\n"
-"    color: rgb(255, 255, 255);\n"
-"    font: 75 14pt \"Bahnschrift\";\n"
-"    border: 2px solid rgb(255, 255, 255);\n"
-"}\n"
-"\n"
-"QPushButton:hover  {\n"
-"    background-color: rgb(255, 255, 255);\n"
-"    color: rgb(0, 0, 0);\n"
-"    font: 75 14pt \"Bahnschrift\";\n"
-"    border: 2px solid rgb(255, 255, 255);\n"
-"}")
-        self.pushButton_4.setObjectName("pushButton_4")
-        self.lineEdit_4 = QtWidgets.QLineEdit(self.tab_4)
-        self.lineEdit_4.setGeometry(QtCore.QRect(20, 20, 871, 41))
-        self.lineEdit_4.setStyleSheet("QLineEdit    {\n"
-"    background-color: rgb(0, 0, 0);\n"
-"    color: rgb(255, 255, 255);\n"
-"    font: 75 14pt \"Bahnschrift\";\n"
-"    border: 2px solid rgb(255, 255, 255);\n"
-"}")
-        self.lineEdit_4.setObjectName("lineEdit_4")
+#         self.pushButton_4 = QtWidgets.QPushButton(self.tab_4)
+#         self.pushButton_4.setGeometry(QtCore.QRect(900, 20, 221, 41))
+#         self.pushButton_4.setStyleSheet("QPushButton    {\n"
+# "    background-color: rgb(0, 0, 0);\n"
+# "    color: rgb(255, 255, 255);\n"
+# "    font: 75 14pt \"Bahnschrift\";\n"
+# "    border: 2px solid rgb(255, 255, 255);\n"
+# "}\n"
+# "\n"
+# "QPushButton:hover  {\n"
+# "    background-color: rgb(255, 255, 255);\n"
+# "    color: rgb(0, 0, 0);\n"
+# "    font: 75 14pt \"Bahnschrift\";\n"
+# "    border: 2px solid rgb(255, 255, 255);\n"
+# "}")
+#         self.pushButton_4.setObjectName("pushButton_4")
+#         self.lineEdit_4 = QtWidgets.QLineEdit(self.tab_4)
+#         self.lineEdit_4.setGeometry(QtCore.QRect(20, 20, 871, 41))
+#         self.lineEdit_4.setStyleSheet("QLineEdit    {\n"
+# "    background-color: rgb(0, 0, 0);\n"
+# "    color: rgb(255, 255, 255);\n"
+# "    font: 75 14pt \"Bahnschrift\";\n"
+# "    border: 2px solid rgb(255, 255, 255);\n"
+# "}")
+#         self.lineEdit_4.setObjectName("lineEdit_4")
         self.tabWidget.addTab(self.tab_4, "")
         self.pushButton_5 = QtWidgets.QPushButton(self.centralwidget)
         self.pushButton_5.setGeometry(QtCore.QRect(1230, 30, 51, 81))
@@ -210,8 +216,8 @@ class Ui_PatientWindow(object):
         drugdata = mycursor.fetchall()
         for o in drugdata:
             self.textEdit_4.append(f'{o}')
-        self.pushButton_4.setText(_translate("MainWindow", "Enter command"))
-        self.lineEdit_4.setText(_translate("MainWindow", "!xobile"))
+        # self.pushButton_4.setText(_translate("MainWindow", "Enter command"))
+        # self.lineEdit_4.setText(_translate("MainWindow", "!xobile"))
         self.tabWidget.setTabText(self.tabWidget.indexOf(self.tab_4), _translate("MainWindow", "Drug"))
 
 if __name__ == "__main__":

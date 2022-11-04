@@ -20,6 +20,21 @@ mycursor.execute("select * from pms")
 myresult = mycursor.fetchall()
 
 class Ui_DoctorWindow(object):
+
+    def Dcommand(self):
+        cmd = self.lineEdit.text()
+        mycursor.execute(cmd)
+        mycursor.execute('describe drugms')
+        drugcol = mycursor.fetchall()
+        col = []
+        for y in drugcol:
+            col.append(y[0])
+        self.textEdit_4.setText(_translate("MainWindow", f"{col}"))
+        mycursor.execute('select * from drugms')
+        drugdata = mycursor.fetchall()
+        for o in drugdata:
+            self.textEdit_4.append(f'{o}')
+        mydb.commit()
     def setupUi(self, MainWindow):
         MainWindow.setObjectName("MainWindow")
         MainWindow.resize(1440, 877)
