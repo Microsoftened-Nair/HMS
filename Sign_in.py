@@ -4,6 +4,7 @@ import mysql.connector
 from Admin import Ui_AdminWindow
 from Doctor import Ui_DoctorWindow
 from Patient import Ui_PatientWindow
+from New_Patient import Ui_NewPatient
 
 
 db = mysql.connector.connect(
@@ -15,6 +16,11 @@ c = db.cursor()
 
 class Ui_MainWindow(object):
 
+    def NewPatient(self):
+        self.window = QtWidgets.QMainWindow()
+        self.ui = Ui_NewPatient()
+        self.ui.setupUi(self.window)
+        self.window.show()
     def AdminWindow(self):
         self.window = QtWidgets.QMainWindow()
         self.ui = Ui_AdminWindow()
@@ -32,6 +38,8 @@ class Ui_MainWindow(object):
         self.ui = Ui_PatientWindow()
         self.ui.setupUi(self.window)
         self.window.show()
+
+
     def authorize(self):
         user = self.lineEdit.text()
         key = self.lineEdit_2.text()
@@ -153,6 +161,8 @@ class Ui_MainWindow(object):
         self.label_4.setObjectName("label_4")
         self.pushButton_2 = QtWidgets.QPushButton(self.centralwidget)
         self.pushButton_2.setGeometry(QtCore.QRect(530, 40, 241, 51))
+        self.pushButton_2.clicked.connect(self.NewPatient)
+        self.pushButton_2.clicked.connect(MainWindow.close)
         font = QtGui.QFont()
         font.setFamily("Bahnschrift")
         font.setPointSize(20)
@@ -193,7 +203,7 @@ class Ui_MainWindow(object):
         self.label_2.setText(_translate("MainWindow", "Username:"))
         self.label_3.setText(_translate("MainWindow", "Password:"))
         self.pushButton.setText(_translate("MainWindow", "Submit"))
-        self.pushButton_2.setText(_translate("MainWindow", "Create account"))
+        self.pushButton_2.setText(_translate("MainWindow", "New Patient"))
 
 
 if __name__ == "__main__":

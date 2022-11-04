@@ -8,8 +8,10 @@ db = mysql.connector.connect(
 )
 
 c = db.cursor()
-c.execute('select password from accounts where username="admin"')
+c.execute('select * from pms')
 
 r = c.fetchall()
 
-
+l = r[-1]
+last_pid = l[0]
+print(last_pid)
