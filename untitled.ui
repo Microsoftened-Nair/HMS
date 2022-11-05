@@ -81,7 +81,7 @@
      <enum>QTabWidget::Rounded</enum>
     </property>
     <property name="currentIndex">
-     <number>1</number>
+     <number>3</number>
     </property>
     <widget class="QWidget" name="tab">
      <attribute name="title">
@@ -320,6 +320,28 @@ QPushButton:hover  {
       </property>
       <property name="text">
        <string>!xobile</string>
+      </property>
+     </widget>
+    </widget>
+    <widget class="QWidget" name="tab_3">
+     <attribute name="title">
+      <string>Page</string>
+     </attribute>
+     <widget class="QTableView" name="tableView">
+      <property name="geometry">
+       <rect>
+        <x>30</x>
+        <y>20</y>
+        <width>1071</width>
+        <height>671</height>
+       </rect>
+      </property>
+      <property name="styleSheet">
+       <string notr="true">QTableView {
+	background-color: rgb(255, 255, 255);
+	rgb(255, 255, 255);
+	font: 8pt &quot;Bahnschrift&quot;;
+}</string>
       </property>
      </widget>
     </widget>

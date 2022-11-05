@@ -42,7 +42,7 @@ class Ui_DoctorWindow(object):
         self.ui = Ui_MainWindow()
         self.ui.setupUi(self.window)
         self.window.show()
-        MainWindow.close()
+
     def setupUi(self, MainWindow):
         MainWindow.setObjectName("MainWindow")
         MainWindow.resize(1440, 877)
@@ -195,6 +195,7 @@ class Ui_DoctorWindow(object):
         self.pushButton_5.setIconSize(QtCore.QSize(50, 50))
         self.pushButton_5.setObjectName("pushButton_5")
         self.pushButton_5.clicked.connect(self.Sign_out)
+        self.pushButton_5.clicked.connect(MainWindow.close)
         MainWindow.setCentralWidget(self.centralwidget)
 
         self.retranslateUi(MainWindow)

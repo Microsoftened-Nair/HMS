@@ -40,42 +40,7 @@ class Ui_MainWindow(object):
         self.window.show()
 
 
-    def authorize(self):
-        user = self.lineEdit.text()
-        key = self.lineEdit_2.text()
 
-        cmd = f'select username from accounts where username="{user}"'
-        c.execute(cmd)
-        r = c.fetchall()
-
-        if len(r) == 0:
-            self.label_4.setText("[USER DOES NOT EXIST          ]")
-
-        if len(r) != 0:
-            cmd = f'select password from accounts where username="{user}"'
-            c.execute(cmd)
-            r=c.fetchall()
-            rs = r[0]
-
-            if key == rs[0]:
-                cmd=f'select permissions from accounts where username="{user}"'
-                c.execute(cmd)
-                r = c.fetchall()
-                keys = r[0]
-                p = keys[0]
-
-                if p=='a':
-                    self.AdminWindow()
-                    MainWindow.close()
-                if p=='d':
-                    self.DoctorWindow()
-                    MainWindow.close()
-                if p=='p':
-                    self.PatientWindow()
-                    MainWindow.close()
-
-            if key != rs[0]:
-                self.label_4.setText('[INCORRECT PASSWORD            ]')
 
     def setupUi(self, MainWindow):
         MainWindow.setObjectName("MainWindow")
@@ -148,6 +113,7 @@ class Ui_MainWindow(object):
 "}")
         self.pushButton.setObjectName("pushButton")
         self.pushButton.clicked.connect(self.authorize)
+        self.pushButton.clicked.connect(MainWindow.close)
         self.label_4 = QtWidgets.QLabel(self.centralwidget)
         self.label_4.setGeometry(QtCore.QRect(30, 430, 771, 31))
         font = QtGui.QFont()
@@ -204,6 +170,40 @@ class Ui_MainWindow(object):
         self.label_3.setText(_translate("MainWindow", "Password:"))
         self.pushButton.setText(_translate("MainWindow", "Submit"))
         self.pushButton_2.setText(_translate("MainWindow", "New Patient"))
+
+    def authorize(self):
+        user = self.lineEdit.text()
+        key = self.lineEdit_2.text()
+
+        cmd = f'select username from accounts where username="{user}"'
+        c.execute(cmd)
+        r = c.fetchall()
+
+        if len(r) == 0:
+            self.label_4.setText("[USER DOES NOT EXIST          ]")
+
+        if len(r) != 0:
+            cmd = f'select password from accounts where username="{user}"'
+            c.execute(cmd)
+            r=c.fetchall()
+            rs = r[0]
+
+            if key == rs[0]:
+                cmd=f'select permissions from accounts where username="{user}"'
+                c.execute(cmd)
+                r = c.fetchall()
+                keys = r[0]
+                p = keys[0]
+
+                if p=='a':
+                    self.AdminWindow()
+                if p=='d':
+                    self.DoctorWindow()
+                if p=='p':
+                    self.PatientWindow()
+
+            if key != rs[0]:
+                self.label_4.setText('[INCORRECT PASSWORD            ]')
 
 
 if __name__ == "__main__":
