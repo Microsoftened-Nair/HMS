@@ -53,7 +53,7 @@ class Ui_AdminWindow(object):
         col = []
         for y in drugcol:
             col.append(y[0])
-        self.textEdit_4.setText(_translate("MainWindow", f"{col}"))
+        self.textEdit_4.setText(f"{col}")
         mycursor.execute('select * from drugms')
         drugdata = mycursor.fetchall()
         for o in drugdata:
