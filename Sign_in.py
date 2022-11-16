@@ -14,7 +14,7 @@ db = mysql.connector.connect(
     database='HMS')
 c = db.cursor()
 
-class Ui_MainWindow(object):
+class Ui_Sign_in(object):
 
     def NewPatient(self):
         self.window = QtWidgets.QMainWindow()
@@ -210,7 +210,7 @@ if __name__ == "__main__":
     import sys
     app = QtWidgets.QApplication(sys.argv)
     MainWindow = QtWidgets.QMainWindow()
-    ui = Ui_MainWindow()
+    ui = Ui_Sign_in()
     ui.setupUi(MainWindow)
     MainWindow.show()
     sys.exit(app.exec_())
