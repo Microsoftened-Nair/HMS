@@ -1,15 +1,15 @@
 from PyQt5 import QtCore, QtGui, QtWidgets
 
 
-class Ui_DeleteRecord(object):
+class Ui_DeleteDoctor(object):
     def setupUi(self, MainWindow):
         MainWindow.setObjectName("MainWindow")
-        MainWindow.resize(604, 109)
+        MainWindow.resize(650, 109)
         MainWindow.setStyleSheet("background-color: rgb(0, 0, 0);")
         self.centralwidget = QtWidgets.QWidget(MainWindow)
         self.centralwidget.setObjectName("centralwidget")
         self.pushButton = QtWidgets.QPushButton(self.centralwidget)
-        self.pushButton.setGeometry(QtCore.QRect(380, 20, 201, 61))
+        self.pushButton.setGeometry(QtCore.QRect(400, 20, 201, 61))
         self.pushButton.setStyleSheet("QPushButton    {\n"
 "    background-color: rgb(0, 0, 0);\n"
 "    color: rgb(255, 255, 255);\n"
@@ -27,7 +27,7 @@ class Ui_DeleteRecord(object):
         self.pushButton.clicked.connect(self.deleteRec)
         self.pushButton.clicked.connect(MainWindow.close)
         self.label = QtWidgets.QLabel(self.centralwidget)
-        self.label.setGeometry(QtCore.QRect(20, 20, 150, 51))
+        self.label.setGeometry(QtCore.QRect(15, 20, 170, 51))
         self.label.setStyleSheet("QLabel {\n"
 "    \n"
 "    font: 18pt \"Bahnschrift\";\n"
@@ -35,14 +35,15 @@ class Ui_DeleteRecord(object):
 "}")
         self.label.setObjectName("label")
         self.lineEdit = QtWidgets.QLineEdit(self.centralwidget)
-        self.lineEdit.setGeometry(QtCore.QRect(170, 20, 201, 61))
+        self.lineEdit.setGeometry(QtCore.QRect(190, 20, 201, 61))
         self.lineEdit.setStyleSheet("QLineEdit {\n"
 "    \n"
 "    font: 18pt \"Bahnschrift\";\n"
 "    color: rgb(255, 255, 255);\n"
 "}")
         self.lineEdit.setObjectName("lineEdit")
-        self.lineEdit.returnPressed.connect(self.deleteRec)
+        self.lineEdit.returnPressed.connect(self.authorize)
+
         # MainWindow.setCentralWidget(self.centralwidget)
 
         self.retranslateUi(MainWindow)
@@ -52,14 +53,14 @@ class Ui_DeleteRecord(object):
         _translate = QtCore.QCoreApplication.translate
         MainWindow.setWindowTitle(_translate("MainWindow", "MainWindow"))
         self.pushButton.setText(_translate("MainWindow", "Delete record"))
-        self.label.setText(_translate("MainWindow", "Insert PID:"))
+        self.label.setText(_translate("MainWindow", "Insert DocID:"))
 
 
 if __name__ == "__main__":
     import sys
     app = QtWidgets.QApplication(sys.argv)
     MainWindow = QtWidgets.QMainWindow()
-    ui = Ui_DeleteRecord()
+    ui = Ui_DeleteDoctor()
     ui.setupUi(MainWindow)
     MainWindow.show()
     sys.exit(app.exec_())

@@ -1,10 +1,6 @@
 from PyQt5 import QtCore, QtGui, QtWidgets
 from PyQt5.QtCore import QProcess
 import mysql.connector
-from Admin import Ui_AdminWindow
-from Doctor import Ui_DoctorWindow
-from Patient import Ui_PatientWindow
-from New_Patient import Ui_NewPatient
 
 
 db = mysql.connector.connect(
@@ -17,30 +13,31 @@ c = db.cursor()
 class Ui_Sign_in(object):
 
     def NewPatient(self):
+        from New_Patient import Ui_NewPatient
         self.window = QtWidgets.QMainWindow()
         self.ui = Ui_NewPatient()
         self.ui.setupUi(self.window)
         self.window.show()
     def AdminWindow(self):
+        from TB_Admin import Ui_MainWindow
         self.window = QtWidgets.QMainWindow()
-        self.ui = Ui_AdminWindow()
+        self.ui = Ui_MainWindow()
         self.ui.setupUi(self.window)
         self.window.show()
 
     def DoctorWindow(self):
+        from TB_Doctor import Ui_DoctorWindow
         self.window = QtWidgets.QMainWindow()
         self.ui = Ui_DoctorWindow()
         self.ui.setupUi(self.window)
         self.window.show()
 
     def PatientWindow(self):
+        from TB_Patient import Ui_PatientWindow
         self.window = QtWidgets.QMainWindow()
         self.ui = Ui_PatientWindow()
         self.ui.setupUi(self.window)
         self.window.show()
-
-
-
 
     def setupUi(self, MainWindow):
         MainWindow.setObjectName("MainWindow")
@@ -87,6 +84,7 @@ class Ui_Sign_in(object):
         self.lineEdit.setStyleSheet("color: rgb(255, 255, 255);")
         self.lineEdit.setText("")
         self.lineEdit.setObjectName("lineEdit")
+        self.lineEdit.returnPressed.connect(self.authorize)
         self.lineEdit_2 = QtWidgets.QLineEdit(self.centralwidget)
         self.lineEdit_2.setGeometry(QtCore.QRect(210, 250, 461, 51))
         font = QtGui.QFont()
@@ -96,6 +94,8 @@ class Ui_Sign_in(object):
         self.lineEdit_2.setStyleSheet("color: rgb(255, 255, 255);")
         self.lineEdit_2.setText("")
         self.lineEdit_2.setObjectName("lineEdit_2")
+        self.lineEdit_2.setEchoMode(QtWidgets.QLineEdit.Password)
+        self.lineEdit_2.returnPressed.connect(self.authorize)
         self.pushButton = QtWidgets.QPushButton(self.centralwidget)
         self.pushButton.setGeometry(QtCore.QRect(300, 330, 211, 51))
         self.pushButton.setStyleSheet("QPushButton    {\n"
