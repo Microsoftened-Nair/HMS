@@ -21,5 +21,5 @@ Created by Meghraj Nair
 
 Installation:
 
-1) pip install requirements.txt
+1) pip install -r requirements.txt
 2) python Sign_in.py
