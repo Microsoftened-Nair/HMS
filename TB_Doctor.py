@@ -3,7 +3,7 @@ from PyQt5.QtWidgets import QTableWidgetItem
 import mysql.connector
 
 
-class Ui_MainWindow(object):
+class Ui_DoctorWindow(object):
 
     def CreateTable(self, table, widnum):
 
@@ -143,6 +143,7 @@ class Ui_MainWindow(object):
 "}")
         self.pushButton.setObjectName("pushButton")
         self.pushButton.clicked.connect(self.Modify_record)
+        self.pushButton.setHidden(True)
         self.tableWidget_1 = QtWidgets.QTableWidget(self.tab)
         self.tableWidget_1.setGeometry(QtCore.QRect(20, 80, 1101, 641))
         self.tableWidget_1.setMaximumSize(QtCore.QSize(16777215, 16777213))
@@ -183,6 +184,7 @@ class Ui_MainWindow(object):
 "}")
         self.pushButton_2.setObjectName("pushButton_2")
         self.pushButton_2.clicked.connect(self.Delete_record)
+        self.pushButton_2.setHidden(True)
         self.pushButton_6 = QtWidgets.QPushButton(self.tab)
         self.pushButton_6.setGeometry(QtCore.QRect(20, 20, 221, 41))
         self.pushButton_6.setStyleSheet("QPushButton    {\n"
@@ -200,6 +202,7 @@ class Ui_MainWindow(object):
 "}")
         self.pushButton_6.setObjectName("pushButton_6")
         self.pushButton_6.clicked.connect(self.New_record)
+        self.pushButton_6.setHidden(True)
         self.pushButton_13 = QtWidgets.QPushButton(self.tab)
         self.pushButton_13.setGeometry(QtCore.QRect(900, 20, 221, 41))
         self.pushButton_13.setStyleSheet("QPushButton    {\n"
@@ -217,6 +220,7 @@ class Ui_MainWindow(object):
 "}")
         self.pushButton_13.setObjectName("pushButton_13")
         self.pushButton_13.clicked.connect(self.Enter_command)
+        self.pushButton_13.setHidden(True)
         self.tabWidget.addTab(self.tab, "")
         self.tab_2 = QtWidgets.QWidget()
         self.tab_2.setObjectName("tab_2")
@@ -296,6 +300,7 @@ class Ui_MainWindow(object):
 "}")
         self.pushButton_15.setObjectName("pushButton_15")
         self.pushButton_15.clicked.connect(self.Enter_command)
+        self.pushButton_15.setHidden(True)
         self.pushButton_10 = QtWidgets.QPushButton(self.tab_2)
         self.pushButton_10.setGeometry(QtCore.QRect(250, 20, 221, 41))
         self.pushButton_10.setStyleSheet("QPushButton    {\n"
@@ -391,6 +396,7 @@ class Ui_MainWindow(object):
 "}")
         self.pushButton_16.setObjectName("pushButton_16")
         self.pushButton_16.clicked.connect(self.Enter_command)
+        self.pushButton_16.setHidden(True)
         self.pushButton_17 = QtWidgets.QPushButton(self.tab_4)
         self.pushButton_17.setGeometry(QtCore.QRect(250, 20, 221, 41))
         self.pushButton_17.setStyleSheet("QPushButton    {\n"
@@ -486,7 +492,7 @@ if __name__ == "__main__":
     import sys
     app = QtWidgets.QApplication(sys.argv)
     MainWindow = QtWidgets.QMainWindow()
-    ui = Ui_MainWindow()
+    ui = Ui_DoctorWindow()
     ui.setupUi(MainWindow)
     MainWindow.show()
     sys.exit(app.exec_())
