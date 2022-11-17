@@ -2,47 +2,18 @@
 Hospital management system
 This project is integrated with MySQL
 Four Tables required in the database HMS are:
+
 Accounts:
-+-------------+-------------+------+-----+---------+-------+
-| Field       | Type        | Null | Key | Default | Extra |
-+-------------+-------------+------+-----+---------+-------+
-| Username    | varchar(20) | NO   |     | NULL    |       |
-| Password    | varchar(20) | NO   |     | NULL    |       |
-| Permissions | char(1)     | NO   |     | NULL    |       |
-+-------------+-------------+------+-----+---------+-------+
+![image](https://user-images.githubusercontent.com/93315117/202414279-08d8d2db-3571-4cc0-8858-d711966d7e9e.png)
 
 PMS(Patient Management System):
-+--------------+------------+------+-----+---------+-------+
-| Field        | Type       | Null | Key | Default | Extra |
-+--------------+------------+------+-----+---------+-------+
-| PID          | varchar(4) | NO   | PRI | NULL    |       |
-| Patient_name | char(20)   | NO   |     | NULL    |       |
-| Illness      | char(30)   | NO   |     | NULL    |       |
-| PhoneNo      | bigint(11) | NO   |     | NULL    |       |
-| Gender       | char(1)    | YES  |     | NULL    |       |
-+--------------+------------+------+-----+---------+-------+
+![image](https://user-images.githubusercontent.com/93315117/202414370-d0c72d8e-0749-44bc-a854-63b24219eb1d.png)
 
 DMS(Doctor Management System):
-+------------+-------------+------+-----+---------+-------+
-| Field      | Type        | Null | Key | Default | Extra |
-+------------+-------------+------+-----+---------+-------+
-| DocID      | varchar(4)  | NO   | PRI | NULL    |       |
-| Doc_name   | char(20)    | NO   |     | NULL    |       |
-| Department | char(20)    | NO   |     | NULL    |       |
-| email      | varchar(50) | YES  |     | NULL    |       |
-| Gender     | char(1)     | YES  |     | NULL    |       |
-+------------+-------------+------+-----+---------+-------+
+![image](https://user-images.githubusercontent.com/93315117/202414456-a217cc6e-3dd0-46a2-a0e5-3aab987c1092.png)
 
 DrugMS(Drugs Management System):
-+-------------+------------+------+-----+---------+-------+
-| Field       | Type       | Null | Key | Default | Extra |
-+-------------+------------+------+-----+---------+-------+
-| DrugID      | varchar(4) | NO   | PRI | NULL    |       |
-| DrugName    | char(20)   | NO   |     | NULL    |       |
-| Department  | char(20)   | NO   |     | NULL    |       |
-| Composition | char(20)   | NO   |     | NULL    |       |
-| Expiry      | date       | NO   |     | NULL    |       |
-+-------------+------------+------+-----+---------+-------+
+![image](https://user-images.githubusercontent.com/93315117/202414538-da5111b0-19b1-4a3a-80f9-e64d121bd526.png)
 
 This project works on these Tables inside the HMS database.
 
