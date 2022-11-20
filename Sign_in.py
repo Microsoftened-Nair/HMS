@@ -95,6 +95,7 @@ class Ui_Sign_in(object):
         self.lineEdit_2.setObjectName("lineEdit_2")
         self.lineEdit_2.setEchoMode(QtWidgets.QLineEdit.Password)
         self.lineEdit_2.returnPressed.connect(self.authorize)
+        self.lineEdit_2.returnPressed.connect(MainWindow.close)
         self.pushButton = QtWidgets.QPushButton(self.centralwidget)
         self.pushButton.setGeometry(QtCore.QRect(300, 330, 211, 51))
         self.pushButton.setStyleSheet("QPushButton    {\n"
