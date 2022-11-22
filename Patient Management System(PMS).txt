@@ -1,7 +1,0 @@
-mysql> create table patient(PID VARCHAR(30) PRIMARY KEY, PATIENT_NAME CHAR(30), ILLNESS CHAR(30), PHONE_NO INTEGER(11) NOT NULL, GENDER CHAR(20));
-       insert into patient values('P1001', 'Theodore William', 'Fever', 99865418, 'Male');
-       insert into patient values('P1002', 'Henry Cavill', 'Fever', 99865128, 'Male');
-       insert into patient values('P1003', 'Barbara Gordon', 'Common Cold', 69065128, 'Female');
-       insert into patient values('P1004', 'Harleen Quinzel', 'Pneumonia', 69067543, 'Female');
-       insert into patient values('P1005', 'Michael Grayson', 'Dengue', 98435673, 'Male');
-       insert into patient values('P1006', 'Gal Gadot', 'Tuberculosis', 96754390, 'Female');

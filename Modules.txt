@@ -1,6 +1,0 @@
-Sign-in screen
-Patient management system
-Doctor managment system
-Admin Management system
-Drug management system
-Online appointment system
