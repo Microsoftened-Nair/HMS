@@ -197,15 +197,7 @@ class Ui_Sign_in(object):
         QtCore.QMetaObject.connectSlotsByName(MainWindow)
 
         self.lineEdit_2.returnPressed.connect(self.authorize)
-
-        # self.pushButton.clicked.connect(self.authorize)
-        # if self.label_4.text() == '[INCORRECT PASSWORD            ]':
-        #     pass
-        # elif self.label_4.text() == "[USER DOES NOT EXIST          ]":
-        #     pass
-        # else:
-        #     # pass
-        #     self.pushButton.clicked.connect(MainWindow.close)
+        self.pushButton.clicked.connect(self.authorize)
 
     def retranslateUi(self, MainWindow):
         _translate = QtCore.QCoreApplication.translate
