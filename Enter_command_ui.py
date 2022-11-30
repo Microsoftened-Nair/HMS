@@ -52,7 +52,8 @@ class Ui_EnterWindow(object):
 
     def retranslateUi(self, MainWindow):
         _translate = QtCore.QCoreApplication.translate
-        MainWindow.setWindowTitle(_translate("MainWindow", "MainWindow"))
+        MainWindow.setWindowTitle(_translate("MainWindow", "HMS - Enter Command"))
+        MainWindow.setWindowIcon(QtGui.QIcon('assets/LOGO.png'))
         self.label.setText(_translate("MainWindow", "Command:"))
         self.pushButton_16.setText(_translate("MainWindow", "Enter command"))
 

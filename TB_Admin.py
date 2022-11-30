@@ -429,10 +429,11 @@ class Ui_MainWindow(object):
         self.tabWidget.setCurrentIndex(0)
         QtCore.QMetaObject.connectSlotsByName(MainWindow)
 
-
     def retranslateUi(self, MainWindow):
         _translate = QtCore.QCoreApplication.translate
-        MainWindow.setWindowTitle(_translate("MainWindow", "MainWindow"))
+        MainWindow.setWindowTitle(_translate("MainWindow", "HMS - Admin"))
+        MainWindow.setWindowTitle(_translate("MainWindow", "HMS - New Record"))
+        MainWindow.setWindowIcon(QtGui.QIcon('assets/LOGO.png'))
         self.pushButton.setText(_translate("MainWindow", "Modify"))
         item = self.tableWidget_1.horizontalHeaderItem(0)
         item.setText(_translate("MainWindow", "PID"))

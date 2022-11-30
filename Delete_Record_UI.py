@@ -51,7 +51,8 @@ class Ui_DeleteRecord(object):
 
     def retranslateUi(self, MainWindow):
         _translate = QtCore.QCoreApplication.translate
-        MainWindow.setWindowTitle(_translate("MainWindow", "MainWindow"))
+        MainWindow.setWindowTitle(_translate("MainWindow", "HMS - Delete Record"))
+        MainWindow.setWindowIcon(QtGui.QIcon('assets/LOGO.png'))
         self.pushButton.setText(_translate("MainWindow", "Delete record"))
         self.label.setText(_translate("MainWindow", "Insert PID:"))
 

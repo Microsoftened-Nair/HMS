@@ -442,7 +442,8 @@ class Ui_PatientWindow(object):
 
     def retranslateUi(self, MainWindow):
         _translate = QtCore.QCoreApplication.translate
-        MainWindow.setWindowTitle(_translate("MainWindow", "MainWindow"))
+        MainWindow.setWindowTitle(_translate("MainWindow", "HMS - Patient"))
+        MainWindow.setWindowIcon(QtGui.QIcon('assets/LOGO.png'))
         self.pushButton.setText(_translate("MainWindow", "Modify"))
         item = self.tableWidget_1.horizontalHeaderItem(0)
         item.setText(_translate("MainWindow", "PID"))

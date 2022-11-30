@@ -134,18 +134,14 @@ class Ui_NewRecord(object):
 
     def retranslateUi(self, MainWindow):
         _translate = QtCore.QCoreApplication.translate
-        MainWindow.setWindowTitle(_translate("MainWindow", "MainWindow"))
+        MainWindow.setWindowTitle(_translate("MainWindow", "HMS - New Record"))
+        MainWindow.setWindowIcon(QtGui.QIcon('assets/LOGO.png'))
         self.label.setText(_translate("MainWindow", "New Record"))
         self.pushButton.setText(_translate("MainWindow", "Submit"))
         self.label_2.setText(_translate("MainWindow", "Name:"))
         self.label_4.setText(_translate("MainWindow", "Illness:"))
         self.label_5.setText(_translate("MainWindow", "PhoneNo:"))
         self.label_6.setText(_translate("MainWindow", "Sex (M/F):"))
-
-
-
-
-
 
 if __name__ == "__main__":
     import sys

@@ -201,7 +201,8 @@ class Ui_Sign_in(object):
 
     def retranslateUi(self, MainWindow):
         _translate = QtCore.QCoreApplication.translate
-        MainWindow.setWindowTitle(_translate("MainWindow", "MainWindow"))
+        MainWindow.setWindowTitle(_translate("MainWindow", "HMS - Sign_in"))
+        MainWindow.setWindowIcon(QtGui.QIcon('assets/LOGO.png'))
         self.label.setText(_translate("MainWindow", "Sign-in"))
         self.label_2.setText(_translate("MainWindow", "Username:"))
         self.label_3.setText(_translate("MainWindow", "Password:"))

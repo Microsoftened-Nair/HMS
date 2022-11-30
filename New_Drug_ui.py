@@ -134,7 +134,8 @@ class Ui_NewDrug(object):
 
     def retranslateUi(self, MainWindow):
         _translate = QtCore.QCoreApplication.translate
-        MainWindow.setWindowTitle(_translate("MainWindow", "MainWindow"))
+        MainWindow.setWindowTitle(_translate("MainWindow", "HMS - New Record"))
+        MainWindow.setWindowIcon(QtGui.QIcon('assets/LOGO.png'))
         self.label.setText(_translate("MainWindow", "New Drug"))
         self.pushButton.setText(_translate("MainWindow", "Submit"))
         self.label_2.setText(_translate("MainWindow", "Name:"))
