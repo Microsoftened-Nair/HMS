@@ -1,6 +1,7 @@
 from PyQt5 import QtCore, QtGui, QtWidgets
 from PyQt5.QtCore import QProcess
 import mysql.connector
+import time
 
 db = mysql.connector.connect(
     host='localhost',
@@ -10,6 +11,43 @@ db = mysql.connector.connect(
 c = db.cursor()
 
 class Ui_Sign_in(object):
+
+    def authorize(self):
+        user = self.lineEdit.text()
+        key = self.lineEdit_2.text()
+
+        cmd = f'select username from accounts where username="{user}"'
+        c.execute(cmd)
+        r = c.fetchall()
+
+        if len(r) == 0:
+            self.label_4.setText("[USER DOES NOT EXIST          ]")
+
+        if len(r) != 0:
+            cmd = f'select password from accounts where username="{user}"'
+            c.execute(cmd)
+            r = c.fetchall()
+            rs = r[0]
+
+            if key == rs[0]:
+                cmd=f'select permissions from accounts where username="{user}"'
+                c.execute(cmd)
+                r = c.fetchall()
+                keys = r[0]
+                p = keys[0]
+
+                if p == 'a':
+                    self.AdminWindow()
+                    MainWindow.close()
+                if p == 'd':
+                    self.DoctorWindow()
+                    MainWindow.close()
+                if p == 'p':
+                    self.PatientWindow()
+                    MainWindow.close()
+
+            if key != rs[0]:
+                self.label_4.setText('[INCORRECT PASSWORD            ]')
 
     def NewPatient(self):
         from New_Patient import Ui_NewPatient
@@ -37,6 +75,7 @@ class Ui_Sign_in(object):
         self.ui = Ui_PatientWindow()
         self.ui.setupUi(self.window)
         self.window.show()
+
 
     def setupUi(self, MainWindow):
         MainWindow.setObjectName("MainWindow")
@@ -83,7 +122,6 @@ class Ui_Sign_in(object):
         self.lineEdit.setStyleSheet("color: rgb(255, 255, 255);")
         self.lineEdit.setText("")
         self.lineEdit.setObjectName("lineEdit")
-        self.lineEdit.returnPressed.connect(self.authorize)
         self.lineEdit_2 = QtWidgets.QLineEdit(self.centralwidget)
         self.lineEdit_2.setGeometry(QtCore.QRect(210, 250, 461, 51))
         font = QtGui.QFont()
@@ -94,8 +132,6 @@ class Ui_Sign_in(object):
         self.lineEdit_2.setText("")
         self.lineEdit_2.setObjectName("lineEdit_2")
         self.lineEdit_2.setEchoMode(QtWidgets.QLineEdit.Password)
-        self.lineEdit_2.returnPressed.connect(self.authorize)
-        self.lineEdit_2.returnPressed.connect(MainWindow.close)
         self.pushButton = QtWidgets.QPushButton(self.centralwidget)
         self.pushButton.setGeometry(QtCore.QRect(300, 330, 211, 51))
         self.pushButton.setStyleSheet("QPushButton    {\n"
@@ -112,8 +148,6 @@ class Ui_Sign_in(object):
 "    border: 2px solid rgb(255, 255, 255);\n"
 "}")
         self.pushButton.setObjectName("pushButton")
-        self.pushButton.clicked.connect(self.authorize)
-        self.pushButton.clicked.connect(MainWindow.close)
         self.label_4 = QtWidgets.QLabel(self.centralwidget)
         self.label_4.setGeometry(QtCore.QRect(30, 430, 771, 31))
         font = QtGui.QFont()
@@ -162,6 +196,17 @@ class Ui_Sign_in(object):
         self.retranslateUi(MainWindow)
         QtCore.QMetaObject.connectSlotsByName(MainWindow)
 
+        self.lineEdit_2.returnPressed.connect(self.authorize)
+
+        # self.pushButton.clicked.connect(self.authorize)
+        # if self.label_4.text() == '[INCORRECT PASSWORD            ]':
+        #     pass
+        # elif self.label_4.text() == "[USER DOES NOT EXIST          ]":
+        #     pass
+        # else:
+        #     # pass
+        #     self.pushButton.clicked.connect(MainWindow.close)
+
     def retranslateUi(self, MainWindow):
         _translate = QtCore.QCoreApplication.translate
         MainWindow.setWindowTitle(_translate("MainWindow", "MainWindow"))
@@ -170,40 +215,6 @@ class Ui_Sign_in(object):
         self.label_3.setText(_translate("MainWindow", "Password:"))
         self.pushButton.setText(_translate("MainWindow", "Submit"))
         self.pushButton_2.setText(_translate("MainWindow", "New Patient"))
-
-    def authorize(self):
-        user = self.lineEdit.text()
-        key = self.lineEdit_2.text()
-
-        cmd = f'select username from accounts where username="{user}"'
-        c.execute(cmd)
-        r = c.fetchall()
-
-        if len(r) == 0:
-            self.label_4.setText("[USER DOES NOT EXIST          ]")
-
-        if len(r) != 0:
-            cmd = f'select password from accounts where username="{user}"'
-            c.execute(cmd)
-            r=c.fetchall()
-            rs = r[0]
-
-            if key == rs[0]:
-                cmd=f'select permissions from accounts where username="{user}"'
-                c.execute(cmd)
-                r = c.fetchall()
-                keys = r[0]
-                p = keys[0]
-
-                if p=='a':
-                    self.AdminWindow()
-                if p=='d':
-                    self.DoctorWindow()
-                if p=='p':
-                    self.PatientWindow()
-
-            if key != rs[0]:
-                self.label_4.setText('[INCORRECT PASSWORD            ]')
 
 
 if __name__ == "__main__":
