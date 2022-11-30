@@ -42,7 +42,8 @@ class Ui_DeleteDoctor(object):
 "    color: rgb(255, 255, 255);\n"
 "}")
         self.lineEdit.setObjectName("lineEdit")
-        self.lineEdit.returnPressed.connect(self.authorize)
+        self.lineEdit.returnPressed.connect(self.deleteRec)
+        self.lineEdit.returnPressed.connect(MainWindow.close)
 
         # MainWindow.setCentralWidget(self.centralwidget)
 

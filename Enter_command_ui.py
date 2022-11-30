@@ -26,6 +26,7 @@ class Ui_EnterWindow(object):
 "}")
         self.lineEdit.setObjectName("lineEdit")
         self.lineEdit.returnPressed.connect(self.enterCommand)
+        self.lineEdit.returnPressed.connect(MainWindow.close)
         self.pushButton_16 = QtWidgets.QPushButton(self.centralwidget)
         self.pushButton_16.setGeometry(QtCore.QRect(1130, 10, 221, 51))
         self.pushButton_16.setStyleSheet("QPushButton    {\n"

@@ -43,6 +43,7 @@ class Ui_DeleteRecord(object):
 "}")
         self.lineEdit.setObjectName("lineEdit")
         self.lineEdit.returnPressed.connect(self.deleteRec)
+        self.lineEdit.returnPressed.connect(MainWindow.close)
         # MainWindow.setCentralWidget(self.centralwidget)
 
         self.retranslateUi(MainWindow)
