@@ -20,6 +20,4 @@ This project works on these Tables inside the HMS database.
 Created by Meghraj Nair
 
 Installation:
-
-1) pip install -r requirements.txt
-2) python Sign_in.py
+ Run install.bat
