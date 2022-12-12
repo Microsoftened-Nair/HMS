@@ -4,7 +4,6 @@ from PyQt5 import QtCore, QtGui, QtWidgets
 from PyQt5.QtCore import QProcess
 import mysql.connector
 import time
-import subprocess, pyautogui as pa
 
 try:
     db = mysql.connector.connect(
