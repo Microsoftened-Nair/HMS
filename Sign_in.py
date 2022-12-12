@@ -1,15 +1,20 @@
+import os
+
 from PyQt5 import QtCore, QtGui, QtWidgets
 from PyQt5.QtCore import QProcess
 import mysql.connector
 import time
+import subprocess, pyautogui as pa
 
-db = mysql.connector.connect(
-    host='localhost',
-    user='root',
-    password='123456',
-    database='HMS')
-c = db.cursor()
-
+try:
+    db = mysql.connector.connect(
+        host='localhost',
+        user='root',
+        password='123456',
+        database='HMS')
+    c = db.cursor()
+except:
+    print("MySQL error run: ALTER USER 'root'@'localhost' IDENTIFIED WITH mysql_native_password BY '123456'; in your mysql window")
 class Ui_Sign_in(object):
 
     def authorize(self):

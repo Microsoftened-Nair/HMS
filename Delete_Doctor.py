@@ -28,8 +28,6 @@ class DeleteDocWin(QtWidgets.QWidget, Ui_DeleteDoctor):
     def closeEvent(self, event):
         self.delclose.emit()
 
-
-
 if __name__ == '__main__':
     import sys
     app = QtWidgets.QApplication(sys.argv)
