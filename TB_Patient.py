@@ -28,11 +28,9 @@ class Ui_PatientWindow(object):
                 eval(f'self.tableWidget{widnum}.setItem(row_number, column_number, QTableWidgetItem(str(item)))')
 
     def Sign_out(self):
-        from Sign_in import Ui_Sign_in
-        self.window = QtWidgets.QMainWindow()
-        self.ui = Ui_Sign_in()
-        self.ui.setupUi(self.window)
-        self.window.show()
+        from Sign_in import SignInWin
+        self.ui = SignInWin()
+        self.ui.show()
 
     def Delete_record(self):
         from Delete_Record import DeleteWin
